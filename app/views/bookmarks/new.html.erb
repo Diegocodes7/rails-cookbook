@@ -1,0 +1,9 @@
+<h1>Add Recipe to <%= @category.name %></h1>
+
+<%= simple_form_for [@category, @bookmark] do |f| %>
+  <%= f.association :recipe, prompt: "Select a recipe" %>
+  <%= f.input :comment %>
+  <%= f.button :submit, "Add to Category", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Back to Category", category_path(@category), class: "btn btn-secondary mt-2" %>
