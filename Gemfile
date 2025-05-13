@@ -17,6 +17,14 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 gem "simple_form"
+gem "sassc-rails"
+gem "bootstrap", "~> 5.2"
+gem "autoprefixer-rails"
+gem "font-awesome-sass", "~> 6.1"
+
+group :development do
+    gem "hotwire-livereload"
+end
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 

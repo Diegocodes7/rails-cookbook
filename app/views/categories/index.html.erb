@@ -1,9 +1,25 @@
-<h1>All Categories</h1>
+<div class="banner">
+    <h1>CookBook</h1>
+  </div>
+</div>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category) %></li>
-  <% end %>
-</ul>
+<div class="container w-75">
+  <div class="info-top">
+    <h2>List of Categories</h2>
+    <%= link_to "New Category", new_category_path, class: "btn btn-warning" %>
+  </div>
 
-<%= link_to "Create New Category", new_category_path, class: "btn btn-primary" %>
+  <div class="cards" class="card-category">
+    <% @categories.each do |category| %>
+      <%= link_to category_path(category) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2))">
+          <div style="text-align: center">
+            <h3><%= category.name %></h3>
+            <p><%= category.bookmarks.count %> recipes</p>
+          </div>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
