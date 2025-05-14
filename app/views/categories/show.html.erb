@@ -1,21 +1,58 @@
-<h1><%= @category.name %></h1>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "logo.jpg" %>
+    <% end %>
 
-<%= link_to "Add a Recipe", new_category_bookmark_path(@category), class: "btn btn-success mb-4" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="row">
-  <% @category.recipes.each do |recipe| %>
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <%= image_tag recipe.image_url, class: "card-img-top", alt: recipe.name if recipe.image_url.present? %>
-        <div class="card-body">
-          <h5 class="card-title"><%= recipe.name %></h5>
-          <p class="card-text"><%= truncate(recipe.description, length: 100) %></p>
-          <p class="card-text"><strong>Rating:</strong> <%= recipe.rating %>/10</p>
-          <%= link_to "Delete", bookmark_path(recipe.bookmarks.find_by(category: @category)), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-        </div>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "All Categories", categories_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "New Category", new_category_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
     </div>
-  <% end %>
+  </div>
 </div>
 
-<%= link_to "Back to Categories", categories_path, class: "btn btn-secondary mt-4" %>
+<div class="banner">
+    <h1>
+    </h1>
+</div>
+
+  <div class="show-container"><h1><%= @category.name %></h1>
+
+  <%= link_to "Add a Recipe", new_category_bookmark_path(@category), class: "btn btn-success mb-4" %>
+
+  <div class="row">
+    <% @category.recipes.each do |recipe| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <%= image_tag recipe.image_url, class: "card-img-top", alt: recipe.name if recipe.image_url.present? %>
+          <div class="card-body">
+            <h5 class="card-title"><%= recipe.name %></h5>
+            <p class="card-text"><%= truncate(recipe.description, length: 100) %></p>
+            <p class="card-text"><strong>Rating:</strong> <%= recipe.rating %></p>
+            <%= link_to "Delete", bookmark_path(recipe.bookmarks.find_by(category: @category)), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Back to Categories", categories_path, class: "btn btn-secondary mt-4" %>
+  </div>

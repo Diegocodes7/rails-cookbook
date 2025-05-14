@@ -1,3 +1,34 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "logo.jpg" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "All Categories", categories_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "New Category", new_category_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="banner">
     <h1>CookBook</h1>
   </div>
@@ -12,7 +43,7 @@
   <div class="cards" class="card-category">
     <% @categories.each do |category| %>
       <%= link_to category_path(category) do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2))">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1557998984-772ce6be0796?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHJlYWwlMjBtYWRyaWR8ZW58MHx8MHx8fDA%3D)">
           <div style="text-align: center">
             <h3><%= category.name %></h3>
             <p><%= category.bookmarks.count %> recipes</p>
